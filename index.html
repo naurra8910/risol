@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Risol Rogut | Aneka Risol Renyah</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --chili:#B3261E;
+      --gold:#F2B134;
+      --dark:#2B1B14;
+      --bg:#FFF4D6;
+    }
+
+    body {
+      background:var(--bg);
+      color:var(--dark);
+    }
+
+    .navbar {
+      background:var(--dark);
+    }
+
+    .navbar-brand {
+      font-weight:800;
+      color:var(--gold)!important;
+    }
+
+    .nav-link {
+      color:#fff!important;
+    }
+
+    .btn-chili {
+      background:var(--chili);
+      color:#fff;
+      border-radius:50rem;
+      padding:.7rem 1.5rem;
+      font-weight:600;
+    }
+
+    .btn-chili:hover {
+      background:#8f1d17;
+      color:#fff;
+    }
+
+    .btn-gold {
+      background:var(--gold);
+      color:var(--dark);
+      font-weight:700;
+    }
+
+    .btn-gold:hover {
+      background:#d99a1f;
+      color:var(--dark);
+    }
+
+    .hero h1 {
+      font-weight:800;
+      letter-spacing:-.02em;
+      font-size:clamp(2.3rem,6vw,3.8rem);
+    }
+
+    .hero h1 span {
+      color:var(--chili);
+    }
+
+    .photo {
+      position:relative;
+      overflow:hidden;
+      background:#FFE3A0;
+    }
+
+    .photo svg {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+
+    .photo img {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-photo {
+      aspect-ratio:1;
+      border-radius:2rem;
+      box-shadow:0 14px 0 -4px rgba(43,27,20,.22);
+    }
+
+    .card-photo {
+      aspect-ratio:4/3;
+    }
+
+    .gallery .photo {
+      aspect-ratio:1;
+      border-radius:1rem;
+    }
+
+    .sticker {
+      position:absolute;
+      top:-18px;
+      left:0;
+      z-index:3;
+      transform:rotate(-8deg);
+      background:#fff;
+      color:var(--dark);
+      padding:.6rem 1.1rem .7rem;
+      border-radius:1.2rem;
+      border:2px dashed var(--chili);
+      box-shadow:3px 4px 0 rgba(43,27,20,.18);
+      text-align:center;
+      line-height:1.05;
+      font-family:"Caveat",cursive;
+    }
+
+    .sticker small {
+      display:block;
+      font-size:1.1rem;
+      color:var(--chili);
+    }
+
+    .sticker strong {
+      display:block;
+      font-size:1.5rem;
+      font-weight:700;
+    }
+
+    .sticker::before {
+      content:"";
+      position:absolute;
+      top:-13px;
+      left:50%;
+      width:58px;
+      height:20px;
+      background:rgba(242,177,52,.75);
+      transform:translateX(-50%) rotate(4deg);
+    }
+
+    .sticker::after {
+      content:"\2661";
+      position:absolute;
+      right:-10px;
+      bottom:-14px;
+      font-size:1.7rem;
+      color:var(--chili);
+      transform:rotate(12deg);
+    }
+
+    .card-photo::after {
+      content:"handmade \2661";
+      position:absolute;
+      right:.6rem;
+      top:.6rem;
+      z-index:2;
+      background:#fff;
+      color:var(--chili);
+      font:700 1.05rem "Caveat",cursive;
+      padding:.1rem .75rem;
+      border-radius:50rem;
+      transform:rotate(6deg);
+      box-shadow:2px 3px 0 rgba(43,27,20,.15);
+    }
+
+    .brownies-photo {
+      aspect-ratio:1;
+      border-radius:2rem;
+      background:#F3D9B1;
+      box-shadow:0 14px 0 -4px rgba(43,27,20,.22);
+    }
+
+    .new-tag {
+      position:absolute;
+      top:.8rem;
+      left:.8rem;
+      z-index:2;
+      background:var(--chili);
+      color:#fff;
+      font:700 1.3rem "Caveat",cursive;
+      padding:.1rem .9rem;
+      border-radius:50rem;
+      transform:rotate(-6deg);
+    }
+
+    .topping-item {
+      display:flex;
+      justify-content:space-between;
+      gap:.5rem;
+      background:#fff;
+      border-radius:.8rem;
+      padding:.55rem .9rem;
+      border-left:5px solid #4A2A1B;
+    }
+
+    .product-card {
+      border:0;
+      border-top:6px solid var(--chili);
+      border-radius:.5rem 1.5rem .5rem 1.5rem;
+      overflow:hidden;
+    }
+
+    .product-card.gold {
+      border-top-color:var(--gold);
+    }
+
+    .product-card.dark {
+      border-top-color:var(--dark);
+    }
+
+    .order-box,
+    .contact-box {
+      background:var(--dark);
+      color:#fff;
+      border-radius:1.5rem;
+    }
+
+    .contact-box a {
+      color:var(--gold);
+    }
+
+    .step-no {
+      flex:none;
+      width:2.2rem;
+      height:2.2rem;
+      border-radius:50%;
+      background:var(--chili);
+      color:#fff;
+      font-weight:800;
+      display:grid;
+      place-items:center;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Ilustrasi risol bawaan -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="risol" viewBox="0 0 200 150">
+
+    <ellipse
+      cx="100"
+      cy="130"
+      rx="76"
+      ry="9"
+      fill="rgba(43,27,20,.18)"
+    />
+
+    <g transform="rotate(-10 100 75)">
+
+      <rect
+        x="22"
+        y="42"
+        width="116"
+        height="64"
+        rx="30"
+        fill="#C97F1E"
+      />
+
+      <rect
+        x="28"
+        y="47"
+        width="104"
+        height="52"
+        rx="26"
+        fill="#E8A83A"
+      />
+
+      <g fill="#B8741A" opacity=".55">
+        <circle cx="55" cy="62" r="2.5"/>
+        <circle cx="78" cy="80" r="2.5"/>
+        <circle cx="95" cy="60" r="2.5"/>
+        <circle cx="112" cy="82" r="2.5"/>
+        <circle cx="45" cy="84" r="2.5"/>
+        <circle cx="68" cy="70" r="2"/>
+      </g>
+
+      <ellipse
+        cx="148"
+        cy="74"
+        rx="25"
+        ry="33"
+        fill="#C97F1E"
+      />
+
+      <ellipse
+        cx="148"
+        cy="74"
+        rx="19"
+        ry="27"
+        fill="var(--f1,#F6E3B4)"
+      />
+
+      <circle
+        cx="142"
+        cy="65"
+        r="6"
+        fill="var(--f2,#E07B39)"
+      />
+
+      <circle
+        cx="154"
+        cy="80"
+        r="5.5"
+        fill="var(--f2,#E07B39)"
+      />
+
+      <circle
+        cx="145"
+        cy="87"
+        r="4"
+        fill="var(--f3,#8DB255)"
+      />
+
+      <circle
+        cx="155"
+        cy="64"
+        r="3.5"
+        fill="var(--f3,#8DB255)"
+      />
+
+    </g>
+  </symbol>
+</svg>
+
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-md navbar-dark sticky-top">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">
+      🥟 Risol Rogut
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menu"
+      aria-controls="menu"
+      aria-expanded="false"
+      aria-label="Buka menu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="#produk">Menu</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#brownies">Brownies</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#galeri">Galeri</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#keunggulan">Keunggulan</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#pesan">Pesan</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#lokasi">Lokasi</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero py-5">
+
+  <div class="container">
+
+    <div class="row align-items-center g-4">
+
+      <div class="col-md-7">
+
+        <h1>
+          Aneka risol renyah,
+          <span>isian royal</span>.
+        </h1>
+
+        <p class="lead my-3">
+          Ragout, mayo smoked beef, sayur, keju, dan masih banyak lagi.
+          Tersedia siap makan dan frozen.
+        </p>
+
+        <a href="#pesan" class="btn btn-chili me-2">
+          Pesan sekarang
+        </a>
+
+        <a
+          href="#produk"
+          class="btn btn-outline-dark rounded-pill px-4 py-2"
+        >
+          Lihat menu
+        </a>
+
+        <p class="mt-4 mb-0 small">
+          <i class="bi bi-geo-alt-fill me-1"></i>
+          Jl. Datuk Kabu Pasar 3
+          &nbsp;|&nbsp;
+          <i class="bi bi-whatsapp me-1"></i>
+          0813-6173-6435
+        </p>
+
+      </div>
+
+
+      <div class="col-md-5 position-relative">
+
+        <div class="sticker">
+          <small>handmade by</small>
+          <strong>Naura Rayani Utsma</strong>
+        </div>
+
+        <div class="photo hero-photo">
+
+          <svg
+            viewBox="0 0 300 300"
+            preserveAspectRatio="xMidYMid meet"
+            role="img"
+            aria-label="Aneka risol goreng"
+          >
+
+            <use
+              href="#risol"
+              x="55"
+              y="5"
+              width="240"
+              height="180"
+              style="--f1:#F6E3B4;--f2:#E07B39;--f3:#8DB255"
+            />
+
+            <use
+              href="#risol"
+              x="5"
+              y="85"
+              width="240"
+              height="180"
+              style="--f1:#FFF8E7;--f2:#B5543A;--f3:#F2C94C"
+            />
+
+            <use
+              href="#risol"
+              x="55"
+              y="140"
+              width="240"
+              height="180"
+              style="--f1:#F8D548;--f2:#FFE88A;--f3:#F2B134"
+            />
+
+          </svg>
+
+          <img
+            src="foto1.jpg"
+            alt="Aneka risol goreng Risol Rogut"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- MENU -->
+<section id="produk" class="py-5">
+
+  <div class="container">
+
+    <h2 class="fw-bold mb-4">
+      Aneka risol kami
+    </h2>
+
+    <div class="row g-4">
+
+
+      <!-- RISOL RAGOUT -->
+      <div class="col-12 col-sm-6 col-lg-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+          <div class="photo card-photo">
+
+            <svg
+              viewBox="0 0 200 150"
+              preserveAspectRatio="xMidYMid meet"
+              style="--f1:#F6E3B4;--f2:#E07B39;--f3:#8DB255"
+              role="img"
+              aria-label="Ilustrasi risol"
+            >
+              <use href="#risol"/>
+            </svg>
+
+            <img
+              src="foto2.jpg"
+              alt="Risol Ragout"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-body">
+
+            <h3 class="h5 fw-bold">
+              Risol Ragout
+            </h3>
+
+            <p class="text-muted">
+              Ragout ayam dan sayur, gurih lembut.
+            </p>
+
+            <span class="fw-semibold">
+              Rp 5.000 / pcs
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- RISOL MAYO -->
+      <div class="col-12 col-sm-6 col-lg-4">
+
+        <div class="card product-card gold h-100 shadow-sm">
+
+          <div class="photo card-photo">
+
+            <svg
+              viewBox="0 0 200 150"
+              preserveAspectRatio="xMidYMid meet"
+              style="--f1:#FFF8E7;--f2:#B5543A;--f3:#F2C94C"
+              role="img"
+              aria-label="Ilustrasi risol"
+            >
+              <use href="#risol"/>
+            </svg>
+
+            <img
+              src="foto3.jpg"
+              alt="Risol Mayo Smoked Beef"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-body">
+
+            <h3 class="h5 fw-bold">
+              Risol Mayo Smoked Beef
+            </h3>
+
+            <p class="text-muted">
+              Smoked beef, telur, dan mayones.
+            </p>
+
+            <span class="fw-semibold">
+              Rp 6.000 / pcs
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- RISOL SAYUR -->
+      <div class="col-12 col-sm-6 col-lg-4">
+
+        <div class="card product-card dark h-100 shadow-sm">
+
+          <div class="photo card-photo">
+
+            <svg
+              viewBox="0 0 200 150"
+              preserveAspectRatio="xMidYMid meet"
+              style="--f1:#EAD9A8;--f2:#E07B39;--f3:#5E9B3B"
+              role="img"
+              aria-label="Ilustrasi risol"
+            >
+              <use href="#risol"/>
+            </svg>
+
+            <img
+              src="foto4.jpg"
+              alt="Risol Sayur"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-body">
+
+            <h3 class="h5 fw-bold">
+              Risol Sayur
+            </h3>
+
+            <p class="text-muted">
+              Wortel, kol, dan bihun berbumbu.
+            </p>
+
+            <span class="fw-semibold">
+              Rp 4.000 / pcs
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- RISOL KEJU -->
+      <div class="col-12 col-sm-6 col-lg-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+          <div class="photo card-photo">
+
+            <svg
+              viewBox="0 0 200 150"
+              preserveAspectRatio="xMidYMid meet"
+              style="--f1:#F8D548;--f2:#FFE88A;--f3:#F2B134"
+              role="img"
+              aria-label="Ilustrasi risol"
+            >
+              <use href="#risol"/>
+            </svg>
+
+            <img
+              src="foto5.jpg"
+              alt="Risol Keju"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-body">
+
+            <h3 class="h5 fw-bold">
+              Risol Keju
+            </h3>
+
+            <p class="text-muted">
+              Keju leleh yang melar saat digigit.
+            </p>
+
+            <span class="fw-semibold">
+              Rp 6.000 / pcs
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- RISOL PIZZA -->
+      <div class="col-12 col-sm-6 col-lg-4">
+
+        <div class="card product-card gold h-100 shadow-sm">
+
+          <div class="photo card-photo">
+
+            <svg
+              viewBox="0 0 200 150"
+              preserveAspectRatio="xMidYMid meet"
+              style="--f1:#D9402B;--f2:#F8D548;--f3:#3E7D32"
+              role="img"
+              aria-label="Ilustrasi risol"
+            >
+              <use href="#risol"/>
+            </svg>
+
+            <img
+              src="foto6.jpg"
+              alt="Risol Pizza"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-body">
+
+            <h3 class="h5 fw-bold">
+              Risol Pizza
+            </h3>
+
+            <p class="text-muted">
+              Saus tomat, sosis, dan keju ala pizza.
+            </p>
+
+            <span class="fw-semibold">
+              Rp 6.000 / pcs
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FROZEN -->
+      <div class="col-12 col-sm-6 col-lg-4">
+
+        <div class="card product-card dark h-100 shadow-sm">
+
+          <div class="photo card-photo">
+
+            <svg
+              viewBox="0 0 200 150"
+              preserveAspectRatio="xMidYMid meet"
+              style="--f1:#CFE8F5;--f2:#FFFFFF;--f3:#9CC9E3"
+              role="img"
+              aria-label="Ilustrasi risol"
+            >
+              <use href="#risol"/>
+            </svg>
+
+            <img
+              src="foto7.jpg"
+              alt="Paket Frozen"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-body">
+
+            <h3 class="h5 fw-bold">
+              Paket Frozen (10 pcs)
+            </h3>
+
+            <p class="text-muted">
+              Tinggal goreng, cocok untuk stok di rumah.
+            </p>
+
+            <span class="fw-semibold">
+              Rp 45.000 / pack
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- BROWNIES -->
+<section id="brownies" class="py-5">
+
+  <div class="container">
+
+    <div class="row align-items-center g-4">
+
+
+      <div class="col-md-5 position-relative">
+
+        <div class="photo brownies-photo">
+
+          <span class="new-tag">
+            menu baru!
+          </span>
+
+          <svg
+            viewBox="0 0 200 200"
+            role="img"
+            aria-label="Ilustrasi brownies cokelat lumer"
+          >
+
+            <ellipse
+              cx="100"
+              cy="168"
+              rx="78"
+              ry="10"
+              fill="rgba(43,27,20,.2)"
+            />
+
+            <ellipse
+              cx="100"
+              cy="156"
+              rx="86"
+              ry="13"
+              fill="#fff"
+            />
+
+            <rect
+              x="44"
+              y="66"
+              width="112"
+              height="84"
+              rx="10"
+              fill="#4A2A1B"
+            />
+
+            <rect
+              x="44"
+              y="66"
+              width="112"
+              height="16"
+              rx="8"
+              fill="#6B3A22"
+            />
+
+            <path
+              d="M88 82 Q88 122 80 136 Q100 150 120 136 Q112 122 112 82 Z"
+              fill="#2A150C"
+            />
+
+            <ellipse
+              cx="100"
+              cy="150"
+              rx="46"
+              ry="8"
+              fill="#2A150C"
+            />
+
+            <path
+              d="M58 76 Q70 70 82 76 T106 76 T130 76 T150 76"
+              stroke="#2A150C"
+              stroke-width="4"
+              fill="none"
+              stroke-linecap="round"
+            />
+
+            <ellipse
+              cx="62"
+              cy="62"
+              rx="9"
+              ry="5"
+              fill="#D9B27A"
+              transform="rotate(-20 62 62)"
+            />
+
+            <ellipse
+              cx="82"
+              cy="58"
+              rx="9"
+              ry="5"
+              fill="#D9B27A"
+              transform="rotate(15 82 58)"
+            />
+
+            <circle cx="108" cy="60" r="4" fill="#F2B134"/>
+            <circle cx="120" cy="56" r="4" fill="#E86A8F"/>
+            <circle cx="132" cy="62" r="4" fill="#6CC4A1"/>
+            <circle cx="142" cy="57" r="4" fill="#F2B134"/>
+
+          </svg>
+
+          <img
+            src="foto11.jpg"
+            alt="Brownies cokelat lumer"
+            loading="lazy"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="col-md-7">
+
+        <h2 class="fw-bold">
+          Brownies Cokelat Lumer
+        </h2>
+
+        <p class="lead">
+          Brownies fudgy dengan cokelat leleh di tengah.
+          Paling enak disantap hangat, lengkap dengan topping pilihanmu.
+        </p>
+
+        <p class="fw-semibold fs-5 mb-3">
+          Rp 18.000 / pcs
+        </p>
+
+        <h3 class="h6 fw-bold">
+          Pilihan topping
+        </h3>
+
+        <div class="row g-2 mb-4">
+
+          <div class="col-12 col-sm-6">
+            <div class="topping-item">
+              <span>Keju parut</span>
+              <span>+Rp 3.000</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <div class="topping-item">
+              <span>Kacang almond</span>
+              <span>+Rp 3.000</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <div class="topping-item">
+              <span>Remah Oreo</span>
+              <span>+Rp 3.000</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <div class="topping-item">
+              <span>Meses warna-warni</span>
+              <span>+Rp 2.000</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <div class="topping-item">
+              <span>Saus karamel</span>
+              <span>+Rp 2.000</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <div class="topping-item">
+              <span>Es krim vanila</span>
+              <span>+Rp 6.000</span>
+            </div>
+          </div>
+
+        </div>
+
+        <a
+          href="#pesan"
+          id="pesan-brownies"
+          class="btn btn-chili"
+        >
+          Pesan brownies
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- GALERI -->
+<section id="galeri" class="py-5">
+
+  <div class="container">
+
+    <h2 class="fw-bold mb-4">
+      Galeri
+    </h2>
+
+    <div class="row g-3 gallery">
+
+
+      <div class="col-6 col-md-3">
+
+        <div class="photo">
+
+          <svg
+            viewBox="0 0 200 150"
+            preserveAspectRatio="xMidYMid meet"
+            style="--f1:#F6E3B4;--f2:#E07B39;--f3:#8DB255"
+            role="img"
+            aria-label="Ilustrasi risol"
+          >
+            <use href="#risol"/>
+          </svg>
+
+          <img
+            src="foto9.jpg"
+            alt="Proses menggoreng risol"
+            loading="lazy"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="col-6 col-md-3">
+
+        <div class="photo">
+
+          <svg
+            viewBox="0 0 200 150"
+            preserveAspectRatio="xMidYMid meet"
+            style="--f1:#FFF8E7;--f2:#B5543A;--f3:#F2C94C"
+            role="img"
+            aria-label="Ilustrasi risol"
+          >
+            <use href="#risol"/>
+          </svg>
+
+          <img
+            src="foto10.jpg"
+            alt="Isian risol saat dibelah"
+            loading="lazy"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="col-6 col-md-3">
+
+        <div class="photo">
+
+          <svg
+            viewBox="0 0 200 150"
+            preserveAspectRatio="xMidYMid meet"
+            style="--f1:#F8D548;--f2:#FFE88A;--f3:#F2B134"
+            role="img"
+            aria-label="Ilustrasi risol"
+          >
+            <use href="#risol"/>
+          </svg>
+
+          <img
+            src="foto11.jpg"
+            alt="Risol dalam kotak kemasan"
+            loading="lazy"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="col-6 col-md-3">
+
+        <div class="photo">
+
+          <svg
+            viewBox="0 0 200 150"
+            preserveAspectRatio="xMidYMid meet"
+            style="--f1:#CFE8F5;--f2:#FFFFFF;--f3:#9CC9E3"
+            role="img"
+            aria-label="Ilustrasi risol"
+          >
+            <use href="#risol"/>
+          </svg>
+
+          <!-- Foto ke-11 dipakai kembali karena hanya tersedia foto1-foto11 -->
+          <img
+            src="foto8.jpg"
+            alt="Paket frozen siap kirim"
+            loading="lazy"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- KEUNGGULAN + CARA PESAN -->
+<section id="keunggulan" class="py-5">
+
+  <div class="container">
+
+    <div class="row g-5">
+
+
+      <div class="col-md-6">
+
+        <h2 class="fw-bold mb-3">
+          Kenapa pilih Risol Rogut
+        </h2>
+
+        <ul class="list-unstyled">
+
+          <li class="mb-2">
+            <i
+              class="bi bi-check-circle-fill me-2"
+              style="color:var(--chili)"
+            ></i>
+            Kulit tipis dan tetap renyah saat dingin.
+          </li>
+
+          <li class="mb-2">
+            <i
+              class="bi bi-check-circle-fill me-2"
+              style="color:var(--chili)"
+            ></i>
+            Isian banyak, tidak pelit.
+          </li>
+
+          <li class="mb-2">
+            <i
+              class="bi bi-check-circle-fill me-2"
+              style="color:var(--chili)"
+            ></i>
+            Banyak pilihan rasa dalam satu pesanan.
+          </li>
+
+          <li class="mb-2">
+            <i
+              class="bi bi-check-circle-fill me-2"
+              style="color:var(--chili)"
+            ></i>
+            Terima pesanan snack box dan acara.
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <h2 class="fw-bold mb-3">
+          Cara pesan
+        </h2>
+
+        <div class="d-flex gap-3 mb-3">
+          <span class="step-no">1</span>
+          <span>Pilih menu dan jumlah di formulir.</span>
+        </div>
+
+        <div class="d-flex gap-3 mb-3">
+          <span class="step-no">2</span>
+          <span>Kirim pesanan lewat WhatsApp.</span>
+        </div>
+
+        <div class="d-flex gap-3 mb-3">
+          <span class="step-no">3</span>
+          <span>Bayar setelah kami konfirmasi stok.</span>
+        </div>
+
+        <div class="d-flex gap-3">
+          <span class="step-no">4</span>
+          <span>Pesanan diantar atau diambil di lokasi kami.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FORM PESAN -->
+<section id="pesan" class="py-5">
+
+  <div class="container">
+
+    <div class="order-box p-4 p-md-5">
+
+      <h2 class="fw-bold mb-3">
+        Pesan lewat WhatsApp
+      </h2>
+
+      <div class="row g-3">
+
+
+        <div class="col-md-5">
+
+          <label
+            for="nama"
+            class="form-label fw-semibold"
+          >
+            Nama
+          </label>
+
+          <input
+            id="nama"
+            class="form-control"
+            placeholder="Nama kamu"
+            autocomplete="name"
+          >
+
+        </div>
+
+
+        <div class="col-md-4">
+
+          <label
+            for="menu-pilih"
+            class="form-label fw-semibold"
+          >
+            Menu
+          </label>
+
+          <select
+            id="menu-pilih"
+            class="form-select"
+          >
+
+            <option>Risol Ragout</option>
+            <option>Risol Mayo Smoked Beef</option>
+            <option>Risol Sayur</option>
+            <option>Risol Keju</option>
+            <option>Risol Pizza</option>
+            <option>Paket Frozen (10 pcs)</option>
+            <option>Brownies Cokelat Lumer</option>
+
+          </select>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+          <label
+            for="jumlah"
+            class="form-label fw-semibold"
+          >
+            Jumlah
+          </label>
+
+          <input
+            id="jumlah"
+            type="number"
+            min="1"
+            value="10"
+            class="form-control"
+          >
+
+        </div>
+
+
+        <div id="topping-box" class="col-12 d-none">
+
+          <p class="fw-semibold mb-2">
+            Pilih topping brownies (boleh lebih dari satu)
+          </p>
+
+          <div class="row g-2">
+
+
+            <div class="col-6 col-md-4">
+
+              <div class="form-check">
+
+                <input
+                  class="form-check-input topping"
+                  type="checkbox"
+                  id="t1"
+                  value="Keju parut"
+                >
+
+                <label
+                  class="form-check-label"
+                  for="t1"
+                >
+                  Keju parut (+3.000)
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4">
+
+              <div class="form-check">
+
+                <input
+                  class="form-check-input topping"
+                  type="checkbox"
+                  id="t2"
+                  value="Kacang almond"
+                >
+
+                <label
+                  class="form-check-label"
+                  for="t2"
+                >
+                  Kacang almond (+3.000)
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4">
+
+              <div class="form-check">
+
+                <input
+                  class="form-check-input topping"
+                  type="checkbox"
+                  id="t3"
+                  value="Remah Oreo"
+                >
+
+                <label
+                  class="form-check-label"
+                  for="t3"
+                >
+                  Remah Oreo (+3.000)
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4">
+
+              <div class="form-check">
+
+                <input
+                  class="form-check-input topping"
+                  type="checkbox"
+                  id="t4"
+                  value="Meses warna-warni"
+                >
+
+                <label
+                  class="form-check-label"
+                  for="t4"
+                >
+                  Meses (+2.000)
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4">
+
+              <div class="form-check">
+
+                <input
+                  class="form-check-input topping"
+                  type="checkbox"
+                  id="t5"
+                  value="Saus karamel"
+                >
+
+                <label
+                  class="form-check-label"
+                  for="t5"
+                >
+                  Saus karamel (+2.000)
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4">
+
+              <div class="form-check">
+
+                <input
+                  class="form-check-input topping"
+                  type="checkbox"
+                  id="t6"
+                  value="Es krim vanila"
+                >
+
+                <label
+                  class="form-check-label"
+                  for="t6"
+                >
+                  Es krim vanila (+6.000)
+                </label>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <button
+        id="kirim"
+        type="button"
+        class="btn btn-gold btn-lg mt-4"
+      >
+        <i class="bi bi-whatsapp me-2"></i>
+        Kirim pesanan
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LOKASI -->
+<section id="lokasi" class="pb-5">
+
+  <div class="container">
+
+    <div class="contact-box p-4 p-md-5">
+
+      <h2 class="fw-bold mb-3">
+        Lokasi dan kontak
+      </h2>
+
+      <p class="mb-2">
+        <i class="bi bi-geo-alt-fill me-2"></i>
+        Jl. Datuk Kabu Pasar 3
+      </p>
+
+      <p class="mb-3">
+
+        <i class="bi bi-whatsapp me-2"></i>
+
+        <a
+          href="https://wa.me/6281361736435"
+          target="_blank"
+          rel="noopener"
+        >
+          0813-6173-6435
+        </a>
+
+      </p>
+
+      <a
+        class="btn btn-gold"
+        href="https://www.google.com/maps/search/?api=1&query=Jl.+Datuk+Kabu+Pasar+3"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="bi bi-map me-2"></i>
+        Buka di Google Maps
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="py-4 text-center text-muted small">
+
+  Handmade with &#9825; by Naura Rayani Utsma
+  &middot;
+  &copy; Risol Rogut
+  &middot;
+  Jl. Datuk Kabu Pasar 3
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+  const NOMOR = "6281361736435";
+
+  const menuEl = document.getElementById("menu-pilih");
+  const toppingBox = document.getElementById("topping-box");
+
+  const BROWNIES = "Brownies Cokelat Lumer";
+
+
+  // Menampilkan topping jika brownies dipilih
+  menuEl.addEventListener("change", () => {
+
+    toppingBox.classList.toggle(
+      "d-none",
+      menuEl.value !== BROWNIES
+    );
+
+  });
+
+
+  // Tombol Pesan Brownies
+  document
+    .getElementById("pesan-brownies")
+    .addEventListener("click", () => {
+
+      menuEl.value = BROWNIES;
+
+      menuEl.dispatchEvent(
+        new Event("change")
+      );
+
+    });
+
+
+  // Kirim pesanan ke WhatsApp
+  document
+    .getElementById("kirim")
+    .addEventListener("click", () => {
+
+      const nama =
+        document
+          .getElementById("nama")
+          .value
+          .trim() || "Pelanggan";
+
+      const menu = menuEl.value;
+
+      const jumlah =
+        document
+          .getElementById("jumlah")
+          .value || 1;
+
+      let teks =
+        `Halo Risol Rogut, saya ${nama}. Saya mau pesan ${jumlah} x ${menu}`;
+
+
+      if (menu === BROWNIES) {
+
+        const top = [
+          ...document.querySelectorAll(".topping:checked")
+        ].map(t => t.value);
+
+        teks += top.length
+          ? ` dengan topping ${top.join(", ")}`
+          : " tanpa topping";
+
+      }
+
+
+      teks += ".";
+
+
+      window.open(
+        `https://wa.me/${NOMOR}?text=${encodeURIComponent(teks)}`,
+        "_blank"
+      );
+
+    });
+
+</script>
+
+</body>
+</html>
